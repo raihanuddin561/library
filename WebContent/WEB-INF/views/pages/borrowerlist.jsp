@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="sf"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+<div style="margin-left: 15%" class="limiter">
+	<div class="container-login100"
+		style="background-image: url('<c:url value="/static/loginstyle/images/bg-01.jpg"></c:url>');">
+		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="width:80%">
+			<span class="login100-form-title p-b-49"> Borrwer Information </span>
+
+			<table class="table table-striped" border="1" >
+				<tr>
+					<th>Borrower Id</th>
+					<th>Borrower Name</th>
+					<th>Book Name</th>
+					<th>address</th>
+					<th>contact</th>
+					<th>duedate</th>
+					
+				</tr>
+				<c:forEach var="row" items="${borrwerlist}">
+					<tr>
+						<td><c:out value="${row.borrowerid}"></c:out></td>
+						<td><c:out value="${row.borrowername}"></c:out></td>
+						<td><c:out value="${row.bookname}"></c:out></td>
+						<td><c:out value="${row.address}"></c:out></td>
+						<td><c:out value="${row.contact}"></c:out></td>
+						<td><c:out value="${row.duedate}"></c:out></td>
+						
+					</tr>
+				</c:forEach>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+
+
+
+

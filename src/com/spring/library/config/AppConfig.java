@@ -6,6 +6,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
+import com.spring.library.dao.BookDaoImpl;
 import com.spring.library.dao.UserDaoImpl;
 
 @Configuration
@@ -22,6 +23,11 @@ public class AppConfig {
 	@Bean(name="daoBean")
 	public UserDaoImpl userDao() {
 		return new UserDaoImpl(getDataSource());
+	}
+	
+	@Bean(name="bookDao")
+	public BookDaoImpl bookDao() {
+		return new BookDaoImpl(getDataSource());
 	}
 	
 }

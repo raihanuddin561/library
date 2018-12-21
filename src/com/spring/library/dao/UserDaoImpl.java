@@ -7,9 +7,11 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.stereotype.Repository;
+
 import com.spring.library.model.User;
 import com.spring.library.passwordEncoder.PasswordEnCoder;
-
+@Repository
 public class UserDaoImpl implements UserDao {
 	private DataSource dataSource;
 	

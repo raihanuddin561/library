@@ -20,8 +20,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 	
 	protected void configure(HttpSecurity http) throws Exception {
+		
 		http.authorizeRequests()
+		.antMatchers("/services").access("isAuthenticated()")
+		.antMatchers("/searchbook").access("isAuthenticated()")
+		.antMatchers("/booklist").access("isAuthenticated()")
 		.antMatchers("/").access("permitAll")
+		.antMatchers("/bookadded").access("permitAll")
+		.antMatchers("/addbook").access("hasRole('ROLE_ADMIN')")
+		.antMatchers("/removebook").access("hasRole('ROLE_ADMIN')")
 		.antMatchers("/createaccount").access("permitAll")
 		.antMatchers("/createaccountmessage").access("permitAll")
 		.antMatchers("/login").access("permitAll");

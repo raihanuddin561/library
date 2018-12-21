@@ -13,6 +13,12 @@
 		<put-attribute name="content" value=""/>
 		<put-attribute name="footer" value="/WEB-INF/views/include/loginfooter.jsp"/>
 	</definition>
+	<definition name="service-definition" template="/WEB-INF/views/layout/defaultservice.jsp">
+		<put-attribute name="title" value=""/>
+		<put-attribute name="header" value="/WEB-INF/views/include/serviceheader.jsp"/>
+		<put-attribute name="content" value=""/>
+		<put-attribute name="footer" value="/WEB-INF/views/include/servicefooter.jsp"/>
+	</definition>
 	<definition name="index" extends="base-definition">
 		<put-attribute name="title" value="Home"/>
 		<put-attribute name="content" value="/WEB-INF/views/pages/index.jsp"/>
@@ -30,8 +36,47 @@
 		<put-attribute name="content" value="/WEB-INF/views/pages/createaccountmessage.jsp"/>
 	</definition>
 	
+	<definition name="bookadded" extends="base-definition">
+		<put-attribute name="title" value="Created"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/bookadded.jsp"/>
+	</definition>
+	
 	<definition name="loggedout" extends="base-definition">
 		<put-attribute name="title" value="Login"/>
 		<put-attribute name="content" value="/WEB-INF/views/pages/loggedout.jsp"/>
 	</definition>
+	<definition name="services" extends="service-definition">
+		<put-attribute name="title" value="services"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/services.jsp"/>
+	</definition>
+	<definition name="addbook" extends="service-definition">
+		<put-attribute name="title" value="addbook"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/addbook.jsp"/>
+	</definition>
+	<definition name="removebook" extends="service-definition">
+		<put-attribute name="title" value="remove"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/removebook.jsp"/>
+	</definition>
+	
+	<definition name="searchbook" extends="service-definition">
+		<put-attribute name="title" value="search"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/searchbook.jsp"/>
+	</definition>
+	<definition name="borrowerlist" extends="service-definition">
+		<put-attribute name="title" value="borrowers"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/borrowerlist.jsp"/>
+	</definition>
+	<definition name="borrowbooklist" extends="service-definition">
+		<put-attribute name="title" value="borrow"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/borrowbooklist.jsp"/>
+	</definition>
+	<definition name="addborrowerinfo" extends="service-definition">
+		<put-attribute name="title" value="borrow"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/addborrowerinfo.jsp"/>
+	</definition>
+	<definition name="borrowedsuccess" extends="service-definition">
+		<put-attribute name="title" value="borrow"/>
+		<put-attribute name="content" value="/WEB-INF/views/pages/borrowedsuccess.jsp"/>
+	</definition>
+	
 </tiles-definitions>

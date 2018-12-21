@@ -42,7 +42,7 @@
 				</a>
 				</li>
             <li class="nav-item">
-              <a class="nav-link" href="<c:url value='/'></c:url>">our services</a>
+              <a class="nav-link" href="<c:url value='/services'></c:url>">our services</a>
             </li>
             
             
@@ -57,7 +57,7 @@
 				</sec:authorize></li>
 			<li class="nav-item"><sec:authorize access="isAuthenticated()">
 					<div class="dropdown">
-						<a class="btn btn-secondary dropdown-toggle" href="#"
+						<a class="btn  btn-secondary dropdown-toggle" href="#"
 							role="button" id="dropdownMenuLink" data-toggle="dropdown"
 							aria-haspopup="true" aria-expanded="false">
 							<sec:authentication
@@ -66,8 +66,8 @@
 						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 							<c:url var="logoutUrl"
 									value="/loggedout"></c:url>
-								<form action="${logoutUrl }" method="post" class="dropdown-item">
-									<input type="submit" value="Logout" /> <input type="hidden"
+								<form action="${logoutUrl }" method="post" class="dropdown-item ">
+									<input type="submit"  value="Logout" /> <input type="hidden"
 										name="${_csrf.parameterName}" value="${_csrf.token}" />
 								</form>
 
