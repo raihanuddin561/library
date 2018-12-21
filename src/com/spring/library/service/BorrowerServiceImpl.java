@@ -21,8 +21,13 @@ public class BorrowerServiceImpl implements BorrowerService {
 
 	@Override
 	public List<Borrower> getBorrowerList() {
+		
+		return borrowerDao.getBorrowerList();
+	}
+
+	public List<Borrower> getBorrowedInfo(String name) {
 		// TODO Auto-generated method stub
-		return null;
+		return borrowerDao.getBorrowedInfo(name);
 	}
 
 }

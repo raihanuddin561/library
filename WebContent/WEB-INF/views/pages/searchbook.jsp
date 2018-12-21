@@ -47,16 +47,12 @@
 							<th>Book Name</th>
 							<th>Author name</th>
 							<th>Status</th>
-							
-							<th>Options</th>
 						</tr>
 						<c:forEach var="row" items="${booklist}">
 							<tr>
 								<td><c:out value="${row.bookname}"></c:out></td>
 								<td><c:out value="${row.authorname}"></c:out></td>
 								<td><c:out value="${row.status}"></c:out></td>
-								<td><a
-									href="${pageContext.request.contextPath}/updatecounseling">Update</a></td>
 							</tr>
 						</c:forEach>
 					</table>

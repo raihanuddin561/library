@@ -24,11 +24,11 @@
 				<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
 				<li class=""><a href="<c:url value='/searchbook'></c:url>">Search Book</a></li>
 				<sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="<c:url value='/addbook'></c:url>">Add Book</a></li></sec:authorize>
-				<sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="<c:url value='/editbook'></c:url>">Edit Book</a></li></sec:authorize>
+				
 				<sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="<c:url value='/removebook'></c:url>">Remove Book</a></li></sec:authorize>
 				<li><a href="<c:url value='/borrowbook'></c:url>">Borrow Book</a></li>
 				<sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="<c:url value='/borrowerlist'></c:url>">Borrower List</a></li></sec:authorize>
-				<li><a href="<c:url value='/'></c:url>">Return Book</a></li>
+				<li><a href="<c:url value='/returnbookform'></c:url>">Return Book</a></li>
 			</ul>
 		</nav>
 

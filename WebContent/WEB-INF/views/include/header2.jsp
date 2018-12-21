@@ -46,10 +46,6 @@
             </li>
             
             
-            <li class="nav-item">
-              <a class="nav-link" href="<c:url value='/'></c:url>">Contact</a>
-            </li>
-            
             <li class="nav-item"><sec:authorize access="!isAuthenticated()">
 					<p>
 						<a href="<c:url value='/login'/>">Login</a>

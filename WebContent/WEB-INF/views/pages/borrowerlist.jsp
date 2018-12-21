@@ -8,7 +8,7 @@
 	<div class="container-login100"
 		style="background-image: url('<c:url value="/static/loginstyle/images/bg-01.jpg"></c:url>');">
 		<div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54" style="width:80%">
-			<span class="login100-form-title p-b-49"> Borrwer Information </span>
+			<span class="login100-form-title p-b-49"> Borrower Information </span>
 
 			<table class="table table-striped" border="1" >
 				<tr>
@@ -17,10 +17,10 @@
 					<th>Book Name</th>
 					<th>address</th>
 					<th>contact</th>
-					<th>duedate</th>
+					<th>due date</th>
 					
 				</tr>
-				<c:forEach var="row" items="${borrwerlist}">
+				<c:forEach var="row" items="${borrowerlist}">
 					<tr>
 						<td><c:out value="${row.borrowerid}"></c:out></td>
 						<td><c:out value="${row.borrowername}"></c:out></td>

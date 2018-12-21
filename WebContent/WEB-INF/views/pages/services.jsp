@@ -4,39 +4,23 @@
 		<article>
 
 
-			<h2>Introduction to anatine</h2>
+			<h2>Introduction to Library</h2>
 			<div class="article-info">
-				Posted on
-				<time datetime="2013-05-14">14 May</time>
-				by <a href="#" rel="author">Joe Bloggs</a>
+				
 			</div>
 
-			<p>
-				Welcome to anatine, a free premium valid CSS3 &amp; HTML5 web
-				template from <a href="http://zypopwebtemplates.com/" title="ZyPOP">ZyPOP</a>.
-				This responsive template is completely <strong>free</strong> to use
-				permitting a link remains back to <a
-					href="http://zypopwebtemplates.com/" title="ZyPOP">http://zypopwebtemplates.com/</a>.
-			</p>
-
-			<p>Should you wish to use this template unbranded you can buy a
-				template license from our website for 8.00 GBP, this will allow you
-				remove all branding related to our site, for more information about
-				this see below.</p>
-
-			<p>This template has been tested in:</p>
+		
+<h3>Paragraph on Library</h3>
 
 
-			<ul class="styledlist">
-				<li>Firefox</li>
-				<li>Opera</li>
-				<li>IE</li>
-				<li>Safari</li>
-				<li>Chrome</li>
-			</ul>
 
-			<a href="#" class="button">Read more</a> <a href="#"
-				class="button button-reversed">Comments</a>
+A library is a collection of books. But it is not a book-shop, for it does not sell books. It is a temple of learning. In the past, people had to go to a teacher to learn from him. But how easy and cheap it is to get knowledge and wisdom today!
+
+Today you can find libraries almost everywhere. These libraries are of two kinds – private and public. A private or personal library has books of the choice of only one person. So, it is not useful to all. But public libraries are meant for all. They have books to suit different tastes. Our schools and colleges, too, have libraries of their own. Such libraries are meant for students and teachers only. So, they have a wide variety of books.
+
+A library is, therefore, a sacred place. You must have respect for this sacred place. It is not a fit place for talks or discussions. It is a place for serious studies. But one thing should never be forgotten. No library by itself has ever produced a Newton or a Tulsidas. A library can help you to some extent. But it cannot carry you very far. It cannot make you a poet or a scientist or a thinker if you do not study the great “Book of Life and Nature”. A great thinker thinks for himself. He does not see with the eyes of others.
+
+Great books or great writers can only open your eyes. But they cannot see for you. You have to see things for yourself. If you only copy others you can be a scholar, but not a great thinker. A library very often makes you a book-worm. So, you have sometimes to come out of the library and move about like a bee. Then and then alone can you give honey to the world. 
 
 
 
@@ -44,40 +28,8 @@
 
 		<article class="expanded">
 
-			<h2>Buy unbranded</h2>
-			<div class="article-info">
-				Posted on
-				<time datetime="2013-05-14">14 May</time>
-				by <a href="#" rel="author">Joe Bloggs</a>
-			</div>
+		
 
-
-			<p>
-				Purchasing a template license for 8.00 GBP (at time of writing
-				around 12 USD) gives you the right to remove any branding including
-				links, logos and source tags relating to ZyPOP. As well as waiving
-				the attribution requirement, your payment will also help us provide
-				continued support for users as well as creating new web templates.
-				Find out more about how to buy at the licensing page on our website
-				which can be accessed at <a
-					href="http://zypopwebtemplates.com/licensing"
-					title="template license">http://zypopwebtemplates.com/licensing</a>
-			</p>
-
-			<h3>Lorem lipsum</h3>
-
-			<p>Morbi fermentum condimentum felis, commodo vestibulum sem
-				mattis sed. Aliquam magna ante, mollis vitae tincidunt in, malesuada
-				vitae turpis. Sed aliquam libero ut velit bibendum consectetur.
-				Quisque sagittis, est in laoreet semper, enim dui consequat felis,
-				faucibus ornare urna velit nec leo. Maecenas condimentum velit vitae
-				est lobortis fermentum. In tristique sem vitae metus ornare luctus
-				tempus nisl volutpat. Integer et est id nisi tempus pharetra
-				sagittis et libero.</p>
-
-
-			<a href="#" class="button">Read more</a> <a href="#"
-				class="button button-reversed">Comments</a>
 		</article>
 
 

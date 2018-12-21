@@ -82,13 +82,14 @@ public class BookDaoImpl implements BookDao {
 
 	public List<Book> bookList(String bookname) {
 		List<Book> bookList = new ArrayList<Book>();
-		String query = "select * from book where bookname=?";
+		String query = "select * from book where bookname like ? and status=?";
 
 		Connection conn = null;
 		try {
 			conn = dataSource.getConnection();
 			PreparedStatement pst = conn.prepareStatement(query);
-			pst.setString(1, bookname);
+			pst.setString(1, "%"+bookname+"%");
+			pst.setString(2, "available");
 			ResultSet rs = pst.executeQuery();
 			while (rs.next()) {
 				Book book = new Book(rs.getString("bookname"), rs.getString("authorname"), rs.getString("status"));
@@ -123,6 +124,38 @@ public class BookDaoImpl implements BookDao {
 			PreparedStatement pst = conn.prepareStatement(query);
 			pst.setInt(1, bookid);
 			pst.execute();
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
+		} finally {
+			if (conn != null) {
+				try {
+					conn.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
+
+	public void returnBook(int borrowerid, String bookname) {
+		String query = "delete from borrower where borrowerid=?";
+		String queryForStatus ="update book set status=? where bookname=?";
+		Connection conn = null;
+		try {
+			conn = dataSource.getConnection();
+			PreparedStatement pst = conn.prepareStatement(query);
+			PreparedStatement pst2 = conn.prepareStatement(queryForStatus);
+			pst.setInt(1, borrowerid);
+			pst.execute();
+			
+			pst2.setString(1, "available");
+			pst2.setString(2, bookname);
+			pst2.execute();
 
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

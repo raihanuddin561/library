@@ -20,17 +20,17 @@
 				
 	
 				<!-- Text input-->
-				<div class="form-group">
+				<%-- <div class="form-group">
 					<label class="col-md-8 control-label" for="borrowername"></label>
 					<div class="col-md-8">
 						<sf:input id="borrowername" path="borrowername" name="borrowername" value="${principal.username }" type="text" placeholder=""
 							class="form-control input-md" />
 						<sf:errors path="borrowername" cssClass="alert-danger"></sf:errors>
 					</div>
-				</div>
+				</div> --%>
 				
 				<div class="form-group">
-					<label class="col-md-8 control-label" for="bookname">Book name</label>
+					<label class="col-md-8 control-label" for="bookname"> </label>
 					<div class="col-md-8">
 						<sf:input id="bookname" path="bookname" name="bookname" value="${param.bname }" type="hidden" placeholder=""
 							class="form-control input-md" />

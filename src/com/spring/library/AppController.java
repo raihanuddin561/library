@@ -51,7 +51,6 @@ public class AppController {
 	@RequestMapping(value = "/booklist",method = RequestMethod.POST)
 	public String showBookList(Model model,String bookname) {
 		
-		
 		System.out.println(bookname);
 		List<Book> getBookList = bookServiceImpl.bookList(bookname);
 		model.addAttribute("booklist", getBookList);
@@ -90,6 +89,22 @@ public String getBooks(Model model){
 	return "borrowbooklist";
 }
 
+@RequestMapping("/returnbook")
+public String returnBook(Model model,@RequestParam("bid") int borrowerid,@RequestParam("bname") String bookname) {
+	bookServiceImpl.returnBook(borrowerid,bookname);
+	return "bookreturnedsuccess";
+}
+
+
+@RequestMapping("/returnbookform")
+public String returnBookform(Model model,Principal principal) {
+	System.out.println(principal.getName());
+	List<Borrower> getBorrowedInfo = borrowerServiceImpl.getBorrowedInfo(principal.getName());
+	model.addAttribute("borrowedbooklist",getBorrowedInfo);
+	
+	return "returnbookform";
+}
+
 @RequestMapping("/borrowthisbook")
 public String borrow(Principal principal,Model model, @Valid Borrower borrower,BindingResult result) {
 	if(result.hasErrors()) {
@@ -97,7 +112,7 @@ public String borrow(Principal principal,Model model, @Valid Borrower borrower,B
 		return "addborrowerinfo";
 	}else {
 		if(borrower.getAddress()!=null) {
-			
+			borrower.setBorrowername(principal.getName());
 			borrowerServiceImpl.addBorrower(borrower);
 			return "borrowedsuccess";
 		}else {

@@ -33,4 +33,8 @@ private BookDaoImpl bookDao;
 		
 	}
 
+	public void returnBook(int borrowerid, String bookname) {
+		bookDao.returnBook(borrowerid,bookname);
+	}
+
 }

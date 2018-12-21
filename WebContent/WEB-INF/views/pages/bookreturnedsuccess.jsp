@@ -12,7 +12,7 @@
 
 
 
-			<h3>You have added book successfully</h3>
+			<h3>You have returned book successfully</h3>
 <br>
 <hr>
 		
