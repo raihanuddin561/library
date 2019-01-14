@@ -21,8 +21,8 @@
 
 		<nav id="mainnav">
 			<ul>
-				<li class=""><a href="<c:url value='/'></c:url>">Home</a></li>
-				<li class=""><a href="<c:url value='/searchbook'></c:url>">Search Book</a></li>
+				<li class=""><a   href="<c:url value='/'></c:url>">Home</a></li>
+				<li id="searchLink" ><a  id="searchClick"  href="<c:url value='/searchbook'></c:url>">Search Book</a></li>
 				<sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="<c:url value='/addbook'></c:url>">Add Book</a></li></sec:authorize>
 				
 				<sec:authorize access="hasRole('ROLE_ADMIN')"><li><a href="<c:url value='/removebook'></c:url>">Remove Book</a></li></sec:authorize>
@@ -35,4 +35,10 @@
 
 
 	</aside>
+<script>
+	document.getElementById("searchClick").onclick = function(){
+		var a = document.getElementById("searchLink");
+		a.className="selected-item";
+	}
+</script>
 	

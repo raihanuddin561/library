@@ -2,21 +2,37 @@ package com.spring.library.service;
 
 import java.util.List;
 
-import com.spring.library.dao.UserDaoImpl;
-import com.spring.library.model.User;
+import javax.transaction.Transactional;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.spring.library.dao.UserDao;
+import com.spring.library.model.Authorities;
+import com.spring.library.model.Users;
+@Service
 public class UserServiceImpl implements UserService {
-	private UserDaoImpl userDao;
+	@Autowired
+	private UserDao userDao;
 	@Override
-	public void addUser(User user) {
+	@Transactional
+	public void addUser(Users user) {
 		userDao.addUser(user);
 
 	}
 
 	@Override
-	public List<User> userList() {
+@Transactional
+	public List<Users> userList() {
 		// TODO Auto-generated method stub
 		return userDao.userList();
+	}
+
+	@Override
+	@Transactional
+	public void addAuthority(Authorities authority) {
+		userDao.addAuthority(authority);
+		
 	}
 
 }

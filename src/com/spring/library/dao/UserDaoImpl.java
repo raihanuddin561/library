@@ -1,58 +1,48 @@
 package com.spring.library.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+
 import java.util.List;
 
-import javax.sql.DataSource;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.query.Query;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.spring.library.model.User;
+import com.spring.library.model.Authorities;
+import com.spring.library.model.Users;
 import com.spring.library.passwordEncoder.PasswordEnCoder;
 @Repository
 public class UserDaoImpl implements UserDao {
-	private DataSource dataSource;
-	
-	
-	public UserDaoImpl(DataSource dataSource) {
-		
-		this.dataSource = dataSource;
-	}
-
+	@Autowired
+	private SessionFactory sessionFactory;
 	@Override
-	public void addUser(User user) {
-		String queryForUser = "insert into users(username,firstname,lastname,email,password,enabled) values(?,?,?,?,?,?)";
-		String queryForAuthorities = "insert into authorities(username,authority) values(?,?)";
-		Connection conn ;
-		try {
-			conn = dataSource.getConnection();
-			PreparedStatement pst = conn.prepareStatement(queryForUser);
-			pst.setString(1, user.getUsername());
-			pst.setString(2, user.getFirstname());
-			pst.setString(3, user.getLastname());
-			pst.setString(4, user.getEmail());
-			pst.setString(5, new PasswordEnCoder().encoder(user.getPassword()));
-			pst.setInt(6, 1);
-			pst.execute();
-			PreparedStatement pst2 = conn.prepareStatement(queryForAuthorities);
-			pst2.setString(1, user.getUsername());
-			pst2.setString(2, "ROLE_USER");
-			pst2.execute();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}finally {
-			
-		}
+	public void addUser(Users user) {
+		
+		
+		Session currentSession = sessionFactory.getCurrentSession();
+		String password = user.getPassword();
+		user.setPassword(new PasswordEnCoder().encoder(password));
+		user.setEnabled(1);
+		currentSession.save(user);
+		
+	
 		
 	}
 
 	@Override
-	public List<User> userList() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Users> userList() {
+		Session currentSession = sessionFactory.getCurrentSession();
+		Query<Users>getUserQuery = (Query<Users>) currentSession.createQuery("from users");
+		List<Users>getUserList=getUserQuery.getResultList();
+		return getUserList;
+	}
+
+	@Override
+	public void addAuthority(Authorities authority) {
+		Session currentSession = sessionFactory.getCurrentSession();
+		currentSession.save(authority);
 	}
 
 }

@@ -1,12 +1,21 @@
 package com.spring.library.model;
 
-import org.springframework.stereotype.Repository;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Repository
+@Entity(name="book")
+@Table(name="book")
 public class Book {
+	@Id
+	@Column(name="bookid")
 	private int bookId;
+	@Column(name="bookname")
 	private String bookname;
+	@Column(name="authorname")
 	private String authorname;
+	@Column(name="status")
 	private String status;
 	public Book() {
 		

@@ -30,7 +30,7 @@
     <!-- Navigation -->
     <nav id="myHeader" class="header navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="logo"></a>
+        <a class="navbar-brand" href="${pageContext.request.contextPath}/"><img src="images/logo.png" alt="logo"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -47,9 +47,13 @@
             
             
             <li class="nav-item"><sec:authorize access="!isAuthenticated()">
-					<p>
+					
+				<p>
 						<a href="<c:url value='/login'/>">Login</a>
 					</p>
+					
+					
+					
 				</sec:authorize></li>
 			<li class="nav-item"><sec:authorize access="isAuthenticated()">
 					<div class="dropdown">

@@ -41,8 +41,8 @@
 		<put-attribute name="content" value="/WEB-INF/views/pages/bookadded.jsp"/>
 	</definition>
 	
-	<definition name="loggedout" extends="base-definition">
-		<put-attribute name="title" value="Login"/>
+	<definition name="loggedout" extends="login-definition">
+		<put-attribute name="title" value="Loggedout"/>
 		<put-attribute name="content" value="/WEB-INF/views/pages/loggedout.jsp"/>
 	</definition>
 	<definition name="services" extends="service-definition">

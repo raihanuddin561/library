@@ -3,12 +3,8 @@ package com.spring.library;
 import java.security.Principal;
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-
-import org.hibernate.annotations.Parameter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,23 +12,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.spring.library.config.AppConfig;
-import com.spring.library.dao.BookDaoImpl;
-import com.spring.library.dao.UserDaoImpl;
 import com.spring.library.model.Book;
 import com.spring.library.model.Borrower;
-import com.spring.library.model.User;
-import com.spring.library.service.BookServiceImpl;
-import com.spring.library.service.BorrowerServiceImpl;
+import com.spring.library.service.BookService;
+import com.spring.library.service.BorrowerService;
 
 @Controller
 public class AppController {
 	@Autowired
-	private BookServiceImpl bookServiceImpl;
+	private BookService bookService;
 	@Autowired
-	private BorrowerServiceImpl borrowerServiceImpl;
+	private BorrowerService borrowerService;
+	
 	@RequestMapping("/")
 	public String homePage() {
+		
 		return "index";
 	}
 	@RequestMapping("/services")
@@ -52,10 +46,16 @@ public class AppController {
 	public String showBookList(Model model,String bookname) {
 		
 		System.out.println(bookname);
-		List<Book> getBookList = bookServiceImpl.bookList(bookname);
+		List<Book> getBookList = bookService.bookList(bookname);
 		model.addAttribute("booklist", getBookList);
+		
 		boolean hasList = true;
 		model.addAttribute("hasList",hasList);
+		if(!getBookList.isEmpty()) {
+			boolean hasBook = true;
+			model.addAttribute("hasBook",hasBook);
+		
+		}
 		return "searchbook";
 	}
 
@@ -63,7 +63,7 @@ public class AppController {
 	
 @RequestMapping("/removebook")
 public String bookList(Model model){
-	List<Book> getBooks = bookServiceImpl.bookList();
+	List<Book> getBooks = bookService.bookList();
 	model.addAttribute("booklist",getBooks);
 	return "removebook";
 }
@@ -71,27 +71,27 @@ public String bookList(Model model){
 
 @RequestMapping("/remove")
 public String removeBook(Model model,@RequestParam("bid")int bookid){
-	 bookServiceImpl.removeBook(bookid);
+	bookService.removeBook(bookid);
 	
 	return "forward:/removebook";
 }
 @RequestMapping("/borrowerlist")
 public String borrowerList(Model model) {
-	List<Borrower> getBorrower = borrowerServiceImpl.getBorrowerList();
+	List<Borrower> getBorrower = borrowerService.getBorrowerList();
 	model.addAttribute("borrowerlist",getBorrower);
 	return "borrowerlist";
 }
 
 @RequestMapping("/borrowbook")
 public String getBooks(Model model){
-	List<Book> getBooks = bookServiceImpl.bookList();
+	List<Book> getBooks = bookService.bookList();
 	model.addAttribute("booklist",getBooks);
 	return "borrowbooklist";
 }
 
 @RequestMapping("/returnbook")
 public String returnBook(Model model,@RequestParam("bid") int borrowerid,@RequestParam("bname") String bookname) {
-	bookServiceImpl.returnBook(borrowerid,bookname);
+	bookService.returnBook(borrowerid,bookname);
 	return "bookreturnedsuccess";
 }
 
@@ -99,21 +99,27 @@ public String returnBook(Model model,@RequestParam("bid") int borrowerid,@Reques
 @RequestMapping("/returnbookform")
 public String returnBookform(Model model,Principal principal) {
 	System.out.println(principal.getName());
-	List<Borrower> getBorrowedInfo = borrowerServiceImpl.getBorrowedInfo(principal.getName());
-	model.addAttribute("borrowedbooklist",getBorrowedInfo);
-	
+	List<Borrower> getBorrowedInfo = borrowerService.getBorrowedInfo(principal.getName());
+	boolean hasBooks = false;
+	if(!getBorrowedInfo.isEmpty()) {
+		hasBooks = true;
+		model.addAttribute("borrowedbooklist",getBorrowedInfo);
+		model.addAttribute("hasBook",hasBooks);
+	}
 	return "returnbookform";
 }
 
 @RequestMapping("/borrowthisbook")
 public String borrow(Principal principal,Model model, @Valid Borrower borrower,BindingResult result) {
+	
 	if(result.hasErrors()) {
 		model.addAttribute("borrower",borrower);
 		return "addborrowerinfo";
 	}else {
 		if(borrower.getAddress()!=null) {
 			borrower.setBorrowername(principal.getName());
-			borrowerServiceImpl.addBorrower(borrower);
+			System.out.println(borrower.getBookname());
+			borrowerService.addBorrower(borrower);
 			return "borrowedsuccess";
 		}else {
 			System.out.println("form loading");
@@ -131,9 +137,8 @@ public String borrow(Principal principal,Model model, @Valid Borrower borrower,B
 			return "addbook";
 		}else {
 			if(book.getBookname()!=null && book.getAuthorname()!=null) {
-				AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-				BookDaoImpl bookDao = context.getBean("bookDao",BookDaoImpl.class);
-				bookDao.addBook(book);
+				
+				bookService.addBook(book);
 				return "bookadded";
 			}else {
 				System.out.println("form loading");

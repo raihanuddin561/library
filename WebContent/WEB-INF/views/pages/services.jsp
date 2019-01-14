@@ -1,5 +1,6 @@
 
 	<section id="content" class="column-right">
+	
 
 		<article>
 
@@ -31,7 +32,6 @@ Great books or great writers can only open your eyes. But they cannot see for yo
 		
 
 		</article>
-
 
 
 

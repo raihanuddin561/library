@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title><tiles:getAsString name="title"></tiles:getAsString></title>
+<title id="titleName"><tiles:getAsString name="title"></tiles:getAsString></title>
 
 <!--[if lt IE 9]>
 <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -81,6 +81,8 @@ License: Creative Commons Attribution
 	<script src="<c:url value='/static/loginstyle/vendor/countdowntime/countdowntime.js'></c:url> "></script>
 <!--===============================================================================================-->
 	<script src="<c:url value='/static/loginstyle/js/main.js'></c:url> "></script>
+	
+	
 
 </body>
 </html>

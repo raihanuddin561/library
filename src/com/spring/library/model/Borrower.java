@@ -1,16 +1,32 @@
 package com.spring.library.model;
 
+import java.sql.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity(name="borrower")
+@Table(name="borrower")
 public class Borrower {
+	@Id
+	@Column(name="borrowerid")
 	private int borrowerid;
+	@Column(name="borrowername")
 	private String borrowername;
+	@Column(name="bookname")
 	private String bookname;
+	@Column(name="address")
 	private String address;
+	@Column(name="contact")
 	private String contact;
-	private String duedate;
+	@Column(name="duedate")
+	private Date duedate;
 	public Borrower() {
 	}
 	public Borrower(int borrowerid, String borrowername, String bookname, String address, String contact,
-			String duedate) {
+			Date duedate) {
 		super();
 		this.borrowerid = borrowerid;
 		this.borrowername = borrowername;
@@ -21,7 +37,7 @@ public class Borrower {
 	}
 	
 	
-	public Borrower(String address, String contact, String duedate) {
+	public Borrower(String address, String contact, Date duedate) {
 		super();
 		this.address = address;
 		this.contact = contact;
@@ -57,10 +73,10 @@ public class Borrower {
 	public void setContact(String contact) {
 		this.contact = contact;
 	}
-	public String getDuedate() {
+	public Date getDuedate() {
 		return duedate;
 	}
-	public void setDuedate(String duedate) {
+	public void setDuedate(Date duedate) {
 		this.duedate = duedate;
 	}
 	

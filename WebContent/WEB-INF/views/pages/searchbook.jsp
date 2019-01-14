@@ -42,20 +42,33 @@
 <hr>
 			<c:choose>
 				<c:when test="${hasList }">
+				<c:choose>
+					<c:when test="${hasBook }">
+					
+					
 					<table class="table table-striped" border="1">
 						<tr>
 							<th>Book Name</th>
 							<th>Author name</th>
 							<th>Status</th>
+							<th>Option</th>
 						</tr>
 						<c:forEach var="row" items="${booklist}">
 							<tr>
 								<td><c:out value="${row.bookname}"></c:out></td>
 								<td><c:out value="${row.authorname}"></c:out></td>
 								<td><c:out value="${row.status}"></c:out></td>
+								<td><a
+							href="${pageContext.request.contextPath}/borrowthisbook?bname=${row.bookname}">Borrow</a></td>
+					
 							</tr>
 						</c:forEach>
 					</table>
+					</c:when>
+					<c:otherwise>
+						<p>This book is not available</p>
+					</c:otherwise>
+				</c:choose>
 				</c:when>
 				<c:otherwise>Enter any book name you want</c:otherwise>
 			</c:choose>
